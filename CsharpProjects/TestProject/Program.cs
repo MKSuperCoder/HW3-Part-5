@@ -54,4 +54,27 @@ THe default group value is six so we don't have to add any arguments to
 the AssignGroup method in this case. */
 #endregion
 
+RandomizeAnimals();
 Console.WriteLine("School A");
+void RandomizeAnimals()
+{
+    Random random = new Random();
+    // Initialize a random object to generate a random number
+
+    for (int i = 0; i < pettingZoo.Length; i++)
+    {
+        int r = random.Next(i,pettingZoo.Length);
+        // Initialize r to a random integer between i and the length of the pettingZoo array
+        // This ensures that we don't go out of bounds of the array
+
+        string temp = pettingZoo[i];
+        pettingZoo[i] = pettingZoo[r];
+        pettingZoo[r] = temp;
+    }
+}
+#region Test case for RandomizeAnimals() method
+/*foreach (string animal in pettingZoo) 
+{
+    Console.WriteLine(animal);
+} */
+#endregion
