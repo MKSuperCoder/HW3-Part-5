@@ -56,6 +56,7 @@ the AssignGroup method in this case. */
 
 RandomizeAnimals();
 Console.WriteLine("School A");
+string[,] group = AssignGroup();
 void RandomizeAnimals()
 {
     Random random = new Random();
@@ -78,3 +79,29 @@ void RandomizeAnimals()
     Console.WriteLine(animal);
 } */
 #endregion
+
+
+
+//The default group size is 6
+string[,] AssignGroup(int groups = 6)
+{
+    string[,] result = new string[groups, pettingZoo.Length/groups];
+    /* groups represents the number of animal groups you want to 
+    create.
+    pettingZoo.length/groups reflects how many animals are assigned to each group
+    For example, since pettingZoo is a fixed array of 18 elements, the 2D array size 
+    for School A is [6, 3] */
+
+    int start = 0;
+    //The outer for loop cycles through each group
+    for (int i = 0; i < groups; i++)
+    {
+        // The inner for loop cycles for the number of animals the group should contain
+        for (int j = 0; j < result.GetLength(1); j++)
+        {
+            result[i, j] = pettingZoo[start++];
+        }
+    }
+
+    return result;
+}
